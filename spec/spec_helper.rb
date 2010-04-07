@@ -24,6 +24,12 @@ end
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/formtastic'))
 require File.expand_path(File.join(File.dirname(__FILE__), '../lib/formtastic/layout_helper'))
 
+# hack for html safe without rails3
+class String
+  def html_safe
+    self
+  end
+end
 
 module FormtasticSpecHelper
   include ActionView::Helpers::FormHelper
