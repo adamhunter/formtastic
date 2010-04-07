@@ -1277,7 +1277,7 @@ module Formtastic #:nodoc:
           html_options.except(:builder, :parent)
         )
 
-        template.concat(fieldset) if block_given?
+        template.concat(fieldset.html_safe) if block_given?
         fieldset
       end
 
