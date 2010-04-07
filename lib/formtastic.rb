@@ -406,7 +406,7 @@ module Formtastic #:nodoc:
       text = (options.delete(:label_prefix_for_nested_input) || "") + text
 
       input_name = options.delete(:input_name) || method
-      super(input_name, text, options)
+      super(input_name, text.html_safe, options)
     end
 
     # Generates error messages for the given method. Errors can be shown as list,
@@ -1273,11 +1273,11 @@ module Formtastic #:nodoc:
         # Ruby 1.9: String#to_s behavior changed, need to make an explicit join.
         contents = contents.join if contents.respond_to?(:join)
         fieldset = template.content_tag(:fieldset,
-          legend << template.content_tag(:ol, contents.html_safe),
+          legend.html_safe << template.content_tag(:ol, contents.html_safe),
           html_options.except(:builder, :parent)
         )
 
-        template.concat(fieldset) if block_given?
+        #template.concat(fieldset) if block_given?
         fieldset
       end
 
