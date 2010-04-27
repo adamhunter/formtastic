@@ -400,7 +400,7 @@ module Formtastic #:nodoc:
         options ||= {}
       end
       text = localized_string(method, text, :label) || humanized_attribute_name(method)
-      text += required_or_optional_string(options.delete(:required))
+      text += required_or_optional_string(options.delete(:required)).html_safe
 
       # special case for boolean (checkbox) labels, which have a nested input
       text = (options.delete(:label_prefix_for_nested_input) || "") + text
