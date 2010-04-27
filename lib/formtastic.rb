@@ -403,10 +403,10 @@ module Formtastic #:nodoc:
       text += required_or_optional_string(options.delete(:required)).html_safe
 
       # special case for boolean (checkbox) labels, which have a nested input
-      text = (options.delete(:label_prefix_for_nested_input) || "") + text
+      text = (options.delete(:label_prefix_for_nested_input) || "").html_safe + text.html_safe
 
       input_name = options.delete(:input_name) || method
-      super(input_name, text.to_s.html_safe, options)
+      super(input_name, text, options)
     end
 
     # Generates error messages for the given method. Errors can be shown as list,
